@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
@@ -12,7 +12,8 @@ import {
   FormControlLabel,
   Grid,
   Typography,
-  makeStyles
+  makeStyles,
+  TextField
 } from '@material-ui/core';
 
 const useStyles = makeStyles(({
@@ -25,6 +26,25 @@ const useStyles = makeStyles(({
 
 const Notifications = ({ className, ...rest }) => {
   const classes = useStyles();
+  const [values, setValues] = useState({
+    factor1: '',
+    factor2: '',
+    factor3: '',
+    factor4: ''
+  });
+  const handleChange = (event) => {
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value
+    });
+    //console.log(event.target.value)
+    
+  };
+  const update = () => {
+    //fetch update back url
+    console.log(values)
+    alert("updated")
+  };
 
   return (
     <form
@@ -33,8 +53,8 @@ const Notifications = ({ className, ...rest }) => {
     >
       <Card>
         <CardHeader
-          subheader="Manage the notifications"
-          title="Notifications"
+          subheader="Manage the factors' weight"
+          title="The factors' weight"
         />
         <Divider />
         <CardContent>
@@ -55,14 +75,57 @@ const Notifications = ({ className, ...rest }) => {
                 gutterBottom
                 variant="h6"
               >
-                Notifications
+                integer from 1 to 10
               </Typography>
+              {/*
               <FormControlLabel
                 control={(
                   <Checkbox defaultChecked />
                 )}
                 label="Email"
               />
+                */}
+              <TextField
+                fullWidth
+                label="factor1"
+                margin="normal"
+                name="factor1"
+                onChange={handleChange}
+                type="password"
+                value={values.factor1}
+                variant="outlined"
+              />
+                <TextField
+                fullWidth
+                label="factor2"
+                margin="normal"
+                name="factor2"
+                onChange={handleChange}
+                type="password"
+                value={values.factor2}
+                variant="outlined"
+              />
+                <TextField
+                fullWidth
+                label="factor3"
+                margin="normal"
+                name="factor3"
+                onChange={handleChange}
+                type="password"
+                value={values.factor3}
+                variant="outlined"
+              />
+                <TextField
+                fullWidth
+                label="factor4"
+                margin="normal"
+                name="factor4"
+                onChange={handleChange}
+                type="password"
+                value={values.factor4}
+                variant="outlined"
+              />
+              {/*
               <FormControlLabel
                 control={(
                   <Checkbox defaultChecked />
@@ -79,7 +142,9 @@ const Notifications = ({ className, ...rest }) => {
                 )}
                 label="Phone calls"
               />
+                */}
             </Grid>
+            {/*
             <Grid
               className={classes.item}
               item
@@ -111,6 +176,7 @@ const Notifications = ({ className, ...rest }) => {
                 label="Phone calls"
               />
             </Grid>
+                */}
           </Grid>
         </CardContent>
         <Divider />
@@ -122,8 +188,9 @@ const Notifications = ({ className, ...rest }) => {
           <Button
             color="primary"
             variant="contained"
+            onClick={update}
           >
-            Save
+            update
           </Button>
         </Box>
       </Card>

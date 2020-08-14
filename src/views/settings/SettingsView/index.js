@@ -27,9 +27,11 @@ const SettingsView = () => {
     >
       <Container maxWidth="lg">
         <Notifications />
+        {/*
         <Box mt={3}>
           <Password />
         </Box>
+        */}
       </Container>
     </Page>
   );

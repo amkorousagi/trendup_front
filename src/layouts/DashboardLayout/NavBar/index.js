@@ -13,6 +13,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import {
+  Airplay as AirplayIcon,
   AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
   Lock as LockIcon,
@@ -26,36 +27,47 @@ import NavItem from './NavItem';
 
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
+  jobTitle: 'Trend Up',
+  name: 'Catch your own Trend!'
 };
 
 const items = [
   {
     href: '/app/dashboard',
-    icon: BarChartIcon,
-    title: 'Dashboard'
+    icon: AirplayIcon,
+    title: 'Trend Map'
+  },
+  {
+    href: '/login',
+    icon: AirplayIcon,
+    title: 'Trend Rank'
+  },
+  {
+    href: '/register',
+    icon: AirplayIcon,
+    title: 'Trend Future'
   },
   {
     href: '/app/customers',
-    icon: UsersIcon,
-    title: 'Customers'
+    icon: BarChartIcon,
+    title: 'Keywords'
   },
   {
     href: '/app/products',
     icon: ShoppingBagIcon,
-    title: 'Products'
+    title: 'Our Apps'
   },
   {
     href: '/app/account',
     icon: UserIcon,
-    title: 'Account'
+    title: 'Our Profile'
   },
   {
     href: '/app/settings',
     icon: SettingsIcon,
     title: 'Settings'
   },
+  /*
   {
     href: '/login',
     icon: LockIcon,
@@ -71,6 +83,7 @@ const items = [
     icon: AlertCircleIcon,
     title: 'Error'
   }
+  */
 ];
 
 const useStyles = makeStyles(() => ({
@@ -146,6 +159,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         </List>
       </Box>
       <Box flexGrow={1} />
+      {/*
       <Box
         p={2}
         m={2}
@@ -179,6 +193,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           </Button>
         </Box>
       </Box>
+      */}
     </Box>
   );
 
