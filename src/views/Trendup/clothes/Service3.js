@@ -1,6 +1,6 @@
 import React from 'react';
-import clsx from 'clsx';
 import {Link} from "react-router-dom";
+import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
   Avatar,
@@ -13,28 +13,28 @@ import {
   makeStyles,
   Button
 } from '@material-ui/core';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
-import FoodIcon from '@material-ui/icons/RestaurantMenuOutlined';
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import MapIcon from '@material-ui/icons/StarBorderOutlined'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%'
   },
   avatar: {
-    backgroundColor: colors.green[600],
+    backgroundColor: colors.red[600],
     height: 56,
     width: 56
   },
   differenceIcon: {
-    color: colors.green[900]
+    color: colors.red[900]
   },
   differenceValue: {
-    color: colors.green[900],
+    color: colors.red[900],
     marginRight: theme.spacing(1)
   }
 }));
 
-const TotalCustomers = ({ className, ...rest }) => {
+const Service3 = ({ className, ...rest }) => {
   const classes = useStyles();
 
   return (
@@ -48,55 +48,39 @@ const TotalCustomers = ({ className, ...rest }) => {
           justify="space-between"
           spacing={3}
         >
-          <Grid item>
+          <Grid
+            item
+           >
             <Button>
-               <Link to={"/food"}>
-               <Typography
+            <Link to={"/clothes/future"}>
+              <Typography
               color="textPrimary"
               gutterBottom
               variant="h1"
             >
-              FOOD
+              Trend Future
             </Typography>
 
-               </Link>
+              </Link>
             </Button>
-        
-           
-           
+            
+            
+            
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <FoodIcon />
+              <MapIcon />
             </Avatar>
           </Grid>
         </Grid>
-        <Box
-          mt={2}
-          display="flex"
-          alignItems="center"
-        >
-          <ArrowUpwardIcon className={classes.differenceIcon} />
-          <Typography
-            className={classes.differenceValue}
-            variant="body2"
-          >
-            16%
-          </Typography>
-          <Typography
-            color="textSecondary"
-            variant="caption"
-          >
-            Since last month
-          </Typography>
-        </Box>
+       
       </CardContent>
     </Card>
   );
 };
 
-TotalCustomers.propTypes = {
+Service3.propTypes = {
   className: PropTypes.string
 };
 
-export default TotalCustomers;
+export default Service3;

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Results = ({ className, customers, handler, clicked_keyword, ...rest }) => {
+const Results = ({ className, customers, handler, clicked_keyword, gender, ...rest }) => {
   const classes = useStyles();
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
@@ -78,6 +78,12 @@ const Results = ({ className, customers, handler, clicked_keyword, ...rest }) =>
   };
 
   return (
+    <div>
+    <div style={{padding:10}}>
+      <Button style={{backgroundColor:"orange"}} onClick={()=> {handler(gender)}}>
+        {(gender=="남성")?"여성":"남성"}
+      </Button>
+    </div>
     <Card
       className={clsx(classes.root, className)}
       {...rest}
@@ -87,17 +93,7 @@ const Results = ({ className, customers, handler, clicked_keyword, ...rest }) =>
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell padding="checkbox">
-                  <Checkbox
-                    checked={selectedCustomerIds.length === customers.length}
-                    color="primary"
-                    indeterminate={
-                      selectedCustomerIds.length > 0
-                      && selectedCustomerIds.length < customers.length
-                    }
-                    onChange={handleSelectAll}
-                  />
-                </TableCell>
+                
                 <TableCell>
                   Rank
                 </TableCell>
@@ -122,13 +118,7 @@ const Results = ({ className, customers, handler, clicked_keyword, ...rest }) =>
                   key={customer.id}
                   selected={selectedCustomerIds.indexOf(customer.id) !== -1}
                 >
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={selectedCustomerIds.indexOf(customer.id) !== -1}
-                      onChange={(event) => handleSelectOne(event, customer.id)}
-                      value="true"
-                    />
-                  </TableCell>
+                 
                   <TableCell>
                     <Box
                       alignItems="center"
@@ -178,6 +168,7 @@ const Results = ({ className, customers, handler, clicked_keyword, ...rest }) =>
         rowsPerPageOptions={[5, 10, 20]}
       />
     </Card>
+    </div>
   );
 };
 
@@ -185,7 +176,8 @@ Results.propTypes = {
   className: PropTypes.string,
   customers: PropTypes.array.isRequired,
   hander: PropTypes.any,
-  clicked_keyword: PropTypes.string
+  clicked_keyword: PropTypes.string,
+  gender: PropTypes.string
 };
 
 export default Results;

@@ -6,7 +6,9 @@ import {
   makeStyles,
   Button,
   Grid,
-  Card
+  Card,
+  CardContent,
+  Typography
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Results from './Results';
@@ -95,14 +97,29 @@ export default class CustomerListView extends Component {
     super(props);
     this.state = {
       customers: [],
+      customers_female: [],
       clicked_keyword: "",
       datafeature: [],
       mlacurracy: [],
-      graph: []
+      graph: [],
+      gender: "남성"
     }
     this.handler = this.handler.bind(this)
   }
   handler(keyword){
+    console.log("state",this.state)
+    if(keyword=="남성"){
+      this.setState({
+        gender: "여성"
+      })
+    }
+    else if(keyword=="여성"){
+      this.setState({
+        gender: "남성"
+      })
+    }
+    else{
+
     this.setState({
       clicked_keyword: keyword
     })
@@ -119,13 +136,14 @@ export default class CustomerListView extends Component {
     fetch('http://49.50.164.37:6001/mlacurracy?keyword='+ keyword)
     .then(response => response.json())
     .then(data => {this.setState({mlacurracy:data.data})})
-    
+  }
+  console.log("state edit",this.state)
   }
 
 
   //console.log("hello")
   async componentDidMount() {
-     fetch('http://49.50.164.37:6001/products')
+     fetch('http://49.50.164.37:6001/products_male')
       .then(response => response.json())
       .then(data => {this.setState({customers:data.data.map(
         customer => {
@@ -142,6 +160,22 @@ export default class CustomerListView extends Component {
       )})})
 
 
+      fetch('http://49.50.164.37:6001/products_female')
+      .then(response => response.json())
+      .then(data => {this.setState({customers_female:data.data.map(
+        customer => {
+          return{
+            id: uuid(),
+            rank: customer.rank,
+            keyword: customer.keyword,
+            gender: customer.gender,
+            date_: customer.date_,
+            score: customer.score
+          } 
+        }
+          
+      )})})
+
     
   }
 
@@ -149,19 +183,36 @@ export default class CustomerListView extends Component {
 
   render(){
     if(this.state["clicked_keyword"] == ""){
+      var g = this.state.gender;
+      if(g == "남성"){
     return (
      
         <Container maxWidth={false}>
-          <Toolbar />
           <Box mt={3}>
             
-            <Results customers={this.state["customers"]} handler={this.handler} clicked_keyword={this.state["clicked_keyword"]} />
+            <Results customers={this.state["customers"]} handler={this.handler} clicked_keyword={this.state["clicked_keyword"]}  gender={this.state.gender}/>
             {console.log(this.state["customers"], "keyword:",this.state["clicked_keyword"])}
           </Box>
         </Container>
      
       
     );
+            }
+            else {
+              return (
+     
+                <Container maxWidth={false}>
+                  
+                  <Box mt={3}>
+                    
+                    <Results customers={this.state["customers_female"]} handler={this.handler} clicked_keyword={this.state["clicked_keyword"] } gender={this.state.gender}/>
+                    {console.log(this.state["customers_female"], "keyword:",this.state["clicked_keyword"])}
+                  </Box>
+                </Container>
+             
+              
+            );
+            }
     }
     else{
 
@@ -174,7 +225,7 @@ export default class CustomerListView extends Component {
         display: 'block',
         //width: '30vw',
         transitionDuration: '0.3s',
-        height: '7vw'
+        height: '100%'
       }
 
       const options = {
@@ -203,6 +254,7 @@ export default class CustomerListView extends Component {
       }
         
       return(
+        <Page title="Rank">
       <Container maxWidth={false}>
         <Grid
          container
@@ -215,15 +267,27 @@ export default class CustomerListView extends Component {
               xl={12}
               xs={12}
             >
-              <Card style={{
-                 display: 'block',
-                 //width: '30vw',
-                 transitionDuration: '0.3s',
-                 height: '15vw',
-                 backgroundColor: "blue" 
-              }}>
+              <div style={{padding: 20}}>
+              <Grid >
+              <Card
+                style={{
+                  backgroundColor: "blue" 
+              }}
+              >
+               <CardContent>
+                <Typography
+                  align="center"
+                  color="textPrimary" 
+                  variant="h1"
+                >
                   {this.state.clicked_keyword}
+                </Typography>
+                </CardContent>
+                
               </Card>
+            </Grid>
+              </div>
+
             </Grid>
             <Grid
               item
@@ -323,6 +387,7 @@ export default class CustomerListView extends Component {
           
         </Grid>
       </Container>
+      </Page>
       );
     }
   }

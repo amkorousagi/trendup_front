@@ -1,11 +1,14 @@
 import React, {Component} from 'react';
+import { v4 as uuid } from 'uuid';
 import {Sigma, RandomizeNodePositions, RelativeSize} from 'react-sigma';
 import {
   Container,
   Grid,
   makeStyles,
   Card,
-  Box
+  Box,
+  Typography,
+  CardContent
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Results from './Results';
@@ -66,84 +69,74 @@ export default class Trendup extends Component {
     var gr = this.state.myGraph[0]
     console.log("20",this.state["myGraph"][0])
     return (
-      <div>
-        <ul>
-          
-          {this.state.myGraph[0].edges.slice(0,1).map(edges =>{
-            return (<Sigma
-            graph={gr} settings={{drawEdges: true, clone: false,labelThreshold: true}}
-            onClickNode={e=> window.open( `https://www.youtube.com/channel/${e.data.node["id"]}`, '_blank')}
-          >
-            <RelativeSize initialSize={50}/>
-            <RandomizeNodePositions/>
-          </Sigma>)
-          })}
-        </ul>
-      </div>
+      <Page title="Map">
+      <div >
+         
+          <Grid>
+          <div style={{padding: 20}}>
+            <Grid >
+              <Card
+                style={{
+                  backgroundColor: "blue" 
+              }}
+              >
+               <CardContent>
+                <Typography
+                  align="center"
+                  color="textPrimary" 
+                  variant="h1"
+                >
+                  Trend Map
+                </Typography>
+                </CardContent>
+                
+              </Card>
+            </Grid>
+          </div>
 
 
-      /*
-      <div>
-        <ul>
-          
-          {this.state.myGraph[0].nodes.slice(0,1).map(node =>{
-            return (<Sigma
-            graph={gr} settings={{drawEdges: true, clone: false,labelThreshold: true}}
-            onClickNode={e=> window.open( `https://www.youtube.com/channel/${e.data.node["id"]}`, '_blank')}
-          >
-            <RelativeSize initialSize={50}/>
-            <RandomizeNodePositions/>
-          </Sigma>)
-          })}
-        </ul>
+          <div style={{padding: 20}}>
+            <Card >
+            
+              {this.state.myGraph[0].edges.slice(0,1).map(edges =>{
+                return (<ul key={uuid()}><Sigma
+                graph={gr} settings={{drawEdges: true, clone: false,labelThreshold: true}}
+                onClickNode={e=> window.open( `https://www.youtube.com/channel/${e.data.node["id"]}`, '_blank')}
+              >
+                <RelativeSize initialSize={50}/>
+                <RandomizeNodePositions/>
+              </Sigma></ul>)
+              })}
+            </Card>
+        </div>
+
+        <div style={{padding: 20}}>
+        <Grid
+              item
+              lg={12}
+              sm={12}
+              xl={12}
+              xs={12}
+            >
+              <Card style={{
+        display: 'block',
+        //width: '30vw',
+        transitionDuration: '0.3s',
+        height: '100%'
+      }}>
+              <Typography 
+                variant="body1"
+              >
+                # 각 노드를 클릭하면 해당 채널로 이동합니다!
+              </Typography>
+              </Card>
+            </Grid>
+                  </div>
+        </Grid>
       </div>
-        */
-      /*
-      <div>
-        
-          {this.state.myGraph.map(e =>{
-            return  (<Sigma
-            graph={e} settings={{drawEdges: true, clone: false,labelThreshold: true}}
-            onClickNode={e=> window.open( `https://www.youtube.com/channel/${e.data.node["id"]}`, '_blank')}
-          >
-            <RelativeSize initialSize={50}/>
-            <RandomizeNodePositions/>
-          </Sigma>)
-          })}
-        
-      </div>
-      */
-      /*
-      <div>
-        <ul>
-          
-          {this.state.myGraph[0].nodes.map(node =>{
-            return <li key={`${node.id}`}>{gr.nodes[0].label}</li>
-          })}
-        </ul>
-      </div>
-          
-         /*
-      <div>
-        <ul>
-          {this.state.myGraph[0].nodes.map(node =>{
-            return <div>{node.label}</div>
-          })}
-        </ul>
-      </div>
-      */
-      
-      /*
-        <Container maxWidth={false}>
-          
-          
-          <Box mt={3}>
-            <Results customers={this.state["myGraph"]}/>
-                {console.log("13",this.state["myGraph"])}
-          </Box>
-        </Container>
-        */
-  
+              </Page>
+
+     
     );
   }
 };

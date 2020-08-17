@@ -13,12 +13,21 @@ import {
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 
+import Service0 from './Service0';
+import Service1 from './Service1';
+import Service2 from './Service2';
+import Service3 from './Service3';
+
+
+
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
     paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
+    paddingTop: theme.spacing(10),
+    paddingLeft: theme.spacing(3),
+    paddingRight: theme.spacing(3)
   }
 }));
 
@@ -29,128 +38,73 @@ const Trendup = () => {
     display: 'block',
     width: '30vw',
     transitionDuration: '0.3s',
-    height: '15vw'
+    height: '10vw'
 }
+    const section = {
+      height: "100%",
+      paddingTop: 5,
+      backgroundColor: "#fff"
+    };
   return (
     <Page
       className={classes.root}
-      title="Dashboard"
+      title="Services"
     >
       <Container maxWidth={false}>
         <Grid
           container
           spacing={5}
         >
+          <div style={ {padding: 20}}>
+            <Grid
+            item
+            lg={12}
+            sm={12}
+            xl={12}
+            xs={12}
+            >
+              
+                <Service0/>
+            </Grid>
+          </div>
+          <div style={ {padding: 20}}>
+            <Grid
+            item
+            lg={12}
+            sm={12}
+            xl={12}
+            xs={12}
+            >
+
+                <Service1/>
+            </Grid>
+          </div>
+          <div style={ {padding: 20}}>
           <Grid
-          lg={4}
-          sm={4}
-          xl={4}
-          xs={4}
+          item
+          lg={12}
+          sm={12}
+          xl={12}
+          xs={12}
           >
-            <Card style={cardStyle}>
-              <Link to={"/clothes/map"}>TrendMap</Link>
-            </Card>
+            
+              <Service2/>
           </Grid>
+          </div>
+          <div style={ {padding: 20}}>
           <Grid
-          lg={4}
-          sm={4}
-          xl={4}
-          xs={4}
+          item
+          lg={12}
+          sm={12}
+          xl={12}
+          xs={12}
           >
-            <Card style={cardStyle}>
-              <Link to={"/clothes/rank"}>TrendRank</Link>
-            </Card>
+           
+              <Service3/>
           </Grid>
-          <Grid
-          lg={4}
-          sm={4}
-          xl={4}
-          xs={4}
-          >
-            <Card style={cardStyle}>
-              <Link to={"/clothes/future"}>TrendFuture</Link>
-            </Card>
-          </Grid>
+          </div>
         </Grid>
-          {/*
-        <Grid
-          container
-          spacing={3}
-        >
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <Budget />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <TotalCustomers />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <TasksProgress />
-          </Grid>
-          <Grid
-            item
-            lg={3}
-            sm={6}
-            xl={3}
-            xs={12}
-          >
-            <TotalProfit />
-          </Grid>
-          <Grid
-            item
-            lg={8}
-            md={12}
-            xl={9}
-            xs={12}
-          >
-            <Sales />
-          </Grid>
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
-          >
-            <TrafficByDevice />
-          </Grid>
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xl={3}
-            xs={12}
-          >
-            <LatestProducts />
-          </Grid>
-          <Grid
-            item
-            lg={8}
-            md={12}
-            xl={9}
-            xs={12}
-          >
-            <LatestOrders />
-          </Grid>
-        </Grid>
-          */}
+          
       </Container>
     </Page>
   );

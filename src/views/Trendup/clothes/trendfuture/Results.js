@@ -111,7 +111,7 @@ const Results = ({ className, customers, handler, clicked_keyword, ...rest }) =>
                   date_
                 </TableCell>
                 <TableCell>
-                  score
+                  Acurracy
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -160,7 +160,7 @@ const Results = ({ className, customers, handler, clicked_keyword, ...rest }) =>
                     {customer.date_}
                   </TableCell>
                   <TableCell>
-                    {customer.score}
+                    {`${customer.score}%`}
                   </TableCell>
                 </TableRow>
               ))}

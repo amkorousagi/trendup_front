@@ -16,7 +16,7 @@ import Trendup_Clothes from 'src/views/Trendup/clothes'
 import Trendup_Clothes_Map from 'src/views/Trendup/clothes/trendmap'
 import Trendup_Clothes_Rank from 'src/views/Trendup/clothes/trendrank'
 import Trendup_Clothes_Future from 'src/views/Trendup/clothes/trendfuture'
-
+import Trendup_Clothes_CATEGORY from 'src/views/Trendup/clothes/trendcategory'
 
 const routes = [
   
@@ -37,7 +37,8 @@ const routes = [
     children: [
       {path: 'map', element: <Trendup_Clothes_Map/>},
       {path: 'rank', element: <Trendup_Clothes_Rank/>},
-      {path: 'future', element: <Trendup_Clothes_Future/>}
+      {path: 'future', element: <Trendup_Clothes_Future/>},
+      {path: 'category', element: <Trendup_Clothes_CATEGORY/>}
     ]
   }
   

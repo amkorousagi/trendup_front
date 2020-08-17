@@ -14,7 +14,7 @@ import {
   Button
 } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
-import MoneyIcon from '@material-ui/icons/Money';
+import ClothesIcon from '@material-ui/icons/LocalLibraryOutlined'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,26 +50,24 @@ const Budget = ({ className, ...rest }) => {
         >
           <Grid item>
             <Button>
-              <Link to={"/clothes"}>CLOTHES</Link>
+              <Link to={"/clothes"}>
+              <Typography
+              color="textPrimary"
+              gutterBottom
+              variant="h1"
+            >
+              CLOTHES
+            </Typography>
+
+              </Link>
             </Button>
             
-            <Typography
-              color="textSecondary"
-              gutterBottom
-              variant="h6"
-            >
-              BUDGET
-            </Typography>
-            <Typography
-              color="textPrimary"
-              variant="h3"
-            >
-              $24,000
-            </Typography>
+            
+            
           </Grid>
           <Grid item>
             <Avatar className={classes.avatar}>
-              <MoneyIcon />
+              <ClothesIcon />
             </Avatar>
           </Grid>
         </Grid>

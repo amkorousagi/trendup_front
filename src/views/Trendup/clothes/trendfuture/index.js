@@ -98,7 +98,8 @@ export default class CustomerListView extends Component {
       clicked_keyword: "",
       datafeature: [],
       mlacurracy: [],
-      graph: []
+      graph: [],
+      future: []
     }
     this.handler = this.handler.bind(this)
   }
@@ -125,6 +126,7 @@ export default class CustomerListView extends Component {
 
   //console.log("hello")
   async componentDidMount() {
+    /*
      fetch('http://49.50.164.37:6001/products')
       .then(response => response.json())
       .then(data => {this.setState({customers:data.data.map(
@@ -140,14 +142,62 @@ export default class CustomerListView extends Component {
         }
           
       )})})
-
-
+    */
+      fetch('http://49.50.164.37:6001/future')
+      .then(response => response.json())
+      .then(data => {this.setState({future:data.data.map(
+        customer => {
+          return{
+            id: uuid(),
+            rank: 0,
+            keyword: customer.word,
+            gender: "남성",
+            date_: customer.date_,
+            score: customer.accuracy
+          } 
+        }
+          
+      )})})
+      
     
   }
 
  
 
   render(){
+
+    const cardStyle = {
+      display: 'block',
+      //width: '30vw',
+      transitionDuration: '0.3s',
+      height: '7vw'
+    }
+
+    const options = {
+      scaleShowGridLines: true,
+      scaleGridLineColor: 'rgba(0,0,0,.05)',
+      scaleGridLineWidth: 1,
+      scaleShowHorizontalLines: true,
+      scaleShowVerticalLines: true,
+      bezierCurve: true,
+      bezierCurveTension: 0.4,
+      pointDot: true,
+      pointDotRadius: 4,
+      pointDotStrokeWidth: 1,
+      pointHitDetectionRadius: 20,
+      datasetStroke: true,
+      datasetStrokeWidth: 2,
+      datasetFill: true,
+      legendTemplate: '<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+    }
+    
+    const styles = {
+      graphContainer: {
+        border: '1px solid black',
+        padding: '15px'
+      }
+    }
+
     if(this.state["clicked_keyword"] == ""){
       var date = new Date().toLocaleString().split(".").map(
         x => {
@@ -159,16 +209,32 @@ export default class CustomerListView extends Component {
       console.log("dd",dd.length)
 
 
-
+      var time = new Date().toLocaleString()
 
     return (
      
         <Container maxWidth={false}>
-          <Toolbar />
+        <Grid
+              item
+              lg={12}
+              sm={12}
+              xl={12}
+              xs={12}
+            >
+              <Card style={{
+                 display: 'block',
+                 //width: '30vw',
+                 transitionDuration: '0.3s',
+                 height: '15vw'
+              }}>
+                  {`${time} 기준 \n 3 주 후의 인기 키워드는 ..`}
+              </Card>
+            </Grid>
+          
           <Box mt={3}>
             
-            <Results customers={this.state["customers"]} handler={this.handler} clicked_keyword={this.state["clicked_keyword"]} />
-            {console.log(this.state["customers"], "keyword:",this.state["clicked_keyword"])}
+            <Results customers={this.state["future"]} handler={this.handler} clicked_keyword={this.state["clicked_keyword"]} />
+            {console.log(this.state["future"], "keyword:",this.state["clicked_keyword"])}
           </Box>
         </Container>
      
@@ -182,37 +248,7 @@ export default class CustomerListView extends Component {
 
 
       
-      const cardStyle = {
-        display: 'block',
-        //width: '30vw',
-        transitionDuration: '0.3s',
-        height: '7vw'
-      }
-
-      const options = {
-        scaleShowGridLines: true,
-        scaleGridLineColor: 'rgba(0,0,0,.05)',
-        scaleGridLineWidth: 1,
-        scaleShowHorizontalLines: true,
-        scaleShowVerticalLines: true,
-        bezierCurve: true,
-        bezierCurveTension: 0.4,
-        pointDot: true,
-        pointDotRadius: 4,
-        pointDotStrokeWidth: 1,
-        pointHitDetectionRadius: 20,
-        datasetStroke: true,
-        datasetStrokeWidth: 2,
-        datasetFill: true,
-        legendTemplate: '<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      }
-      
-      const styles = {
-        graphContainer: {
-          border: '1px solid black',
-          padding: '15px'
-        }
-      }
+     
         
       return(
       <Container maxWidth={false}>
