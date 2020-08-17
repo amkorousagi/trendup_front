@@ -13,8 +13,7 @@ RUN apt install -y npm
 RUN mkdir example
 WORKDIR /example
 RUN git clone https://github.com/amkorousagi/trendup_front.git
-RUN cd trendup_front
-
+WORKDIR /example/trendup_front
 RUN npm install
 RUN npm install react-sigma
 RUN npm install react-chartjs-2
