@@ -11,7 +11,6 @@ import {
 import Page from 'src/components/Page';
 import Results from './Results';
 import Toolbar from './Toolbar';
-import Script from 'react-load-script'
 import { Rating } from '@material-ui/lab';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js';
