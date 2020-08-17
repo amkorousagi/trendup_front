@@ -7,8 +7,6 @@ import {
 
 } from '@material-ui/core';
 import Page from 'src/components/Page';
-import Parser from 'html-react-parser'
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
