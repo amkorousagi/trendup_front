@@ -106,17 +106,17 @@ export default class CustomerListView extends Component {
     this.setState({
       clicked_keyword: keyword
     })
-    fetch('http://localhost:4000/raw?keyword='+ keyword)
+    fetch('http://49.50.164.37:6001/raw?keyword='+ keyword)
       .then(response => response.json())
       .then(data => {this.setState({graph:data.data})})
 
 
-    fetch('http://localhost:4000/datafeature?keyword='+ keyword)
+    fetch('http://49.50.164.37:6001/datafeature?keyword='+ keyword)
       .then(response => response.json())
       .then(data => {this.setState({datafeature:data.data})})
 
 
-    fetch('http://localhost:4000/mlacurracy?keyword='+ keyword)
+    fetch('http://49.50.164.37:6001/mlacurracy?keyword='+ keyword)
     .then(response => response.json())
     .then(data => {this.setState({mlacurracy:data.data})})
     
@@ -125,7 +125,7 @@ export default class CustomerListView extends Component {
 
   //console.log("hello")
   async componentDidMount() {
-     fetch('http://localhost:4000/products')
+     fetch('http://49.50.164.37:6001/products')
       .then(response => response.json())
       .then(data => {this.setState({customers:data.data.map(
         customer => {

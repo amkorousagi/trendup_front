@@ -41,13 +41,13 @@ export default class Trendup extends Component {
 
   async componentDidMount() {
     
-    fetch('http://localhost:4000/node')
+    fetch('http://49.50.164.37:6001/node')
       .then(response => response.json())
       .then(data => {this.setState(this.state.myGraph[0]["nodes"] = data.data)}
       )
       .then(data => console.log(data))
       
-    fetch('http://localhost:4000/edge')
+    fetch('http://49.50.164.37:6001/edge')
       .then(response => response.json())
       .then(data => {this.setState(this.state.myGraph[0]["edges"] = data["data"])}
       )
