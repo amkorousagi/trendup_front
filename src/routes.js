@@ -16,6 +16,7 @@ import Trendup_Clothes from 'src/views/Trendup/clothes'
 import Trendup_Clothes_Map from 'src/views/Trendup/clothes/trendmap'
 import Trendup_Clothes_Rank from 'src/views/Trendup/clothes/trendrank'
 import Trendup_Clothes_Future from 'src/views/Trendup/clothes/trendfuture'
+import Trendup_Keyword from 'src/views/Trendup/keyword'
 
 
 const routes = [

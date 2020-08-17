@@ -10,7 +10,8 @@ import {
   Grid,
   Typography,
   colors,
-  makeStyles
+  makeStyles,
+  Button
 } from '@material-ui/core';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import MoneyIcon from '@material-ui/icons/Money';
@@ -48,7 +49,10 @@ const Budget = ({ className, ...rest }) => {
           spacing={3}
         >
           <Grid item>
-            <Link to={"/clothes"}>CLOTHES</Link>
+            <Button>
+              <Link to={"/clothes"}>CLOTHES</Link>
+            </Button>
+            
             <Typography
               color="textSecondary"
               gutterBottom

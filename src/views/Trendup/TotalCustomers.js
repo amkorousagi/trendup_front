@@ -10,7 +10,8 @@ import {
   Grid,
   Typography,
   colors,
-  makeStyles
+  makeStyles,
+  Button
 } from '@material-ui/core';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
@@ -48,7 +49,10 @@ const TotalCustomers = ({ className, ...rest }) => {
           spacing={3}
         >
           <Grid item>
-          <Link to={"/food"}>FOOD</Link>
+            <Button>
+               <Link to={"/food"}>FOOD</Link>
+            </Button>
+         
             <Typography
               color="textSecondary"
               gutterBottom
