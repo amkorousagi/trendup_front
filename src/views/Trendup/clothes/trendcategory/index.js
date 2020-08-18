@@ -183,14 +183,13 @@ export default class CustomerListView extends Component {
             xl={12}
             xs={12}
           >
-            <div style={{padding:10}}>
+            <div style={{padding:20}}>
             <Card style={{
                 display: 'block',
                 //width: '30vw',
                 transitionDuration: '0.3s',
-                backgroundColor: "blue" 
             }}>
-              <div style={{padding:10}}>
+              <div >
               <Typography
                 align ="center"
                 color="textPrimary"

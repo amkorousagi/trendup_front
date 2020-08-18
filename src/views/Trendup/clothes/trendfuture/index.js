@@ -6,7 +6,9 @@ import {
   makeStyles,
   Button,
   Grid,
-  Card
+  Card,
+  CardContent,
+  Typography
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Results from './Results';
@@ -99,11 +101,27 @@ export default class CustomerListView extends Component {
       datafeature: [],
       mlacurracy: [],
       graph: [],
-      future: []
+      future: [],
+      future_female: [],
+      test: [],
+      gender: "남성"
     }
     this.handler = this.handler.bind(this)
   }
   handler(keyword){
+    console.log("state",this.state)
+    if(keyword=="남성"){
+      this.setState({
+        gender: "여성"
+      })
+    }
+    else if(keyword=="여성"){
+      this.setState({
+        gender: "남성"
+      })
+    }
+    else{
+
     this.setState({
       clicked_keyword: keyword
     })
@@ -120,6 +138,8 @@ export default class CustomerListView extends Component {
     fetch('http://49.50.164.37:6001/mlacurracy?keyword='+ keyword)
     .then(response => response.json())
     .then(data => {this.setState({mlacurracy:data.data})})
+  }
+  console.log("state edit",this.state)
     
   }
 
@@ -143,8 +163,13 @@ export default class CustomerListView extends Component {
           
       )})})
     */
-      fetch('http://49.50.164.37:6001/future')
+      fetch('http://49.50.164.37:6001/future_male')
       .then(response => response.json())
+      /*
+      .then(data => {this.setState({test:data.data})})
+      .then(data => console.log(data))
+      .then(data => console.log("test",this.state.test))
+      */
       .then(data => {this.setState({future:data.data.map(
         customer => {
           return{
@@ -158,8 +183,24 @@ export default class CustomerListView extends Component {
         }
           
       )})})
+
+      console.log("future:", this.state.future)
       
-    
+      fetch('http://49.50.164.37:6001/future_female')
+      .then(response => response.json())
+      .then(data => {this.setState({future_female:data.data.map(
+        customer => {
+          return{
+            id: uuid(),
+            rank: 0,
+            keyword: customer.word,
+            gender: "남성",
+            date_: customer.date_,
+            score: customer.accuracy
+          } 
+        }
+        )})})
+        console.log("future_female:", this.state.future_female)
   }
 
  
@@ -199,18 +240,12 @@ export default class CustomerListView extends Component {
     }
 
     if(this.state["clicked_keyword"] == ""){
-      var date = new Date().toLocaleString().split(".").map(
-        x => {
-          return parseInt(x)
-        }
-      )
-      console.log((date[1]*30 + date[2])/7)
-      var dd = [{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":1},{"KNN":0,"SVM":1},{"KNN":0,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":1,"SVM":1},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0},{"KNN":0,"SVM":0}]
-      console.log("dd",dd.length)
+     
 
 
       var time = new Date().toLocaleString()
 
+      if(this.state.gender == "남성"){
     return (
      
         <Container maxWidth={false}>
@@ -221,25 +256,76 @@ export default class CustomerListView extends Component {
               xl={12}
               xs={12}
             >
-              <Card style={{
-                 display: 'block',
-                 //width: '30vw',
-                 transitionDuration: '0.3s',
-                 height: '15vw'
-              }}>
-                  {`${time} 기준 \n 3 주 후의 인기 키워드는 ..`}
+               <div style={{padding: 20}}>
+              <Grid >
+              <Card
+                style={{
+                  backgroundColor: "" 
+              }}
+              >
+               <CardContent>
+                <Typography
+                  align="center"
+                  color="textPrimary" 
+                  variant="h1"
+                >
+                   {`${time} 기준 \n 3 주 후의 인기 키워드는 ..`}
+                </Typography>
+                </CardContent>
+                
               </Card>
+            </Grid>
+              </div>
+             
             </Grid>
           
           <Box mt={3}>
             
-            <Results customers={this.state["future"]} handler={this.handler} clicked_keyword={this.state["clicked_keyword"]} />
+            <Results customers={this.state["future"]} handler={this.handler} clicked_keyword={this.state["clicked_keyword"]} gender={this.state.gender} />
             {console.log(this.state["future"], "keyword:",this.state["clicked_keyword"])}
           </Box>
         </Container>
      
       
     );
+            }
+            else{
+              return (
+     
+                <Container maxWidth={false}>
+                <Grid
+                      item
+                      lg={12}
+                      sm={12}
+                      xl={12}
+                      xs={12}
+                    >
+                      <Card style={{
+                         display: 'block',
+                         //width: '30vw',
+                         transitionDuration: '0.3s',
+                         height: '15vw'
+                      }}>
+                          {`${time} 기준 \n 3 주 후의 인기 키워드는 ..`}
+                      </Card>
+                    </Grid>
+                  
+                  <Box mt={3}>
+                    
+                    <Results customers={this.state["future_female"]} handler={this.handler} clicked_keyword={this.state["clicked_keyword"]} gender={this.state.gender} />
+                    {console.log(this.state["future_female"], "keyword:",this.state["clicked_keyword"])}
+                  </Box>
+                </Container>
+             
+              
+            );
+
+
+
+            }
+
+
+
     }
     else{
 
@@ -263,15 +349,26 @@ export default class CustomerListView extends Component {
               xl={12}
               xs={12}
             >
-              <Card style={{
-                 display: 'block',
-                 //width: '30vw',
-                 transitionDuration: '0.3s',
-                 height: '15vw',
-                 backgroundColor: "blue" 
-              }}>
+               <div style={{padding: 20}}>
+              <Grid >
+              <Card
+                style={{
+                  backgroundColor: "" 
+              }}
+              >
+               <CardContent>
+                <Typography
+                  align="center"
+                  color="textPrimary" 
+                  variant="h1"
+                >
                   {this.state.clicked_keyword}
+                </Typography>
+                </CardContent>
+                
               </Card>
+            </Grid>
+              </div>
             </Grid>
             <Grid
               item

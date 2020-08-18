@@ -2,7 +2,10 @@ import React from 'react';
 import {
   Container,
   Grid,
-  makeStyles
+  makeStyles,
+  Card,
+  Typography,
+  CardContent
 } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Budget from './Budget';
@@ -13,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
     paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
   }
 }));
 
@@ -25,6 +27,35 @@ const Trendup = () => {
       className={classes.root}
       title="Categories"
     >
+
+<Grid
+              item
+              lg={12}
+              sm={12}
+              xl={12}
+              xs={12}
+            >
+              <div style={{padding: 20}}>
+              <Grid >
+              <Card
+                style={{
+              }}
+              >
+               <CardContent>
+                <Typography
+                  align="center"
+                  color="textPrimary" 
+                  variant="h1"
+                >
+                  Categories
+                </Typography>
+                </CardContent>
+                
+              </Card>
+            </Grid>
+              </div>
+
+            </Grid>
       <Container maxWidth={false}>
         <Grid
           container

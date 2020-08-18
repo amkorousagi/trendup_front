@@ -77,7 +77,7 @@ export default class Trendup extends Component {
             <Grid >
               <Card
                 style={{
-                  backgroundColor: "blue" 
+                  backgroundColor: "" 
               }}
               >
                <CardContent>

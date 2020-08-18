@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.dark,
     minHeight: '100%',
     paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(10),
     paddingLeft: theme.spacing(3),
     paddingRight: theme.spacing(3)
   }
@@ -50,6 +49,36 @@ const Trendup = () => {
       className={classes.root}
       title="Services"
     >
+
+<Grid
+              item
+              lg={12}
+              sm={12}
+              xl={12}
+              xs={12}
+            >
+              <div style={{padding: 20}}>
+              <Grid >
+              <Card
+                style={{
+              }}
+              >
+               <CardContent>
+                <Typography
+                  align="center"
+                  color="textPrimary" 
+                  variant="h1"
+                >
+                  Services
+                </Typography>
+                </CardContent>
+                
+              </Card>
+            </Grid>
+              </div>
+
+            </Grid>
+
       <Container maxWidth={false}>
         <Grid
           container

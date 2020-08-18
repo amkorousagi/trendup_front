@@ -271,7 +271,7 @@ export default class CustomerListView extends Component {
               <Grid >
               <Card
                 style={{
-                  backgroundColor: "blue" 
+                  backgroundColor: "" 
               }}
               >
                <CardContent>
