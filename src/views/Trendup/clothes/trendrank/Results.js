@@ -91,11 +91,6 @@ const Results = ({ className, customers, handler, clicked_keyword, gender, ...re
       </div>
     </div>
 
-    <div style={{padding:10}}>
-      <Button style={{backgroundColor:"orange"}} onClick={()=> {handler(gender)}}>
-        {(gender=="남성")?"여성":"남성"}
-      </Button>
-    </div>
     <Card
       className={clsx(classes.root, className)}
       {...rest}
