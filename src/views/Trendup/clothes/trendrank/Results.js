@@ -79,6 +79,18 @@ const Results = ({ className, customers, handler, clicked_keyword, gender, ...re
 
   return (
     <div>
+
+<div style={{padding:10}}>
+      <Button style={{backgroundColor:"orange"}} onClick={()=> {handler(gender)}}>
+        {(gender=="남성")?"여성":"남성"}
+      </Button>
+      <div style={{padding:10}}>
+      <Card>
+        상단의 버튼으로 성별을 바꾸어보세요!
+      </Card>
+      </div>
+    </div>
+
     <div style={{padding:10}}>
       <Button style={{backgroundColor:"orange"}} onClick={()=> {handler(gender)}}>
         {(gender=="남성")?"여성":"남성"}
