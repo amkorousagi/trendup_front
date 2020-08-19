@@ -300,14 +300,26 @@ export default class CustomerListView extends Component {
                       xl={12}
                       xs={12}
                     >
-                      <Card style={{
-                         display: 'block',
-                         //width: '30vw',
-                         transitionDuration: '0.3s',
-                         height: '15vw'
-                      }}>
-                          {`${time} 기준 \n 3 주 후의 인기 키워드는 ..`}
-                      </Card>
+                       <div style={{padding: 20}}>
+              <Grid >
+              <Card
+                style={{
+                  backgroundColor: "" 
+              }}
+              >
+               <CardContent>
+                <Typography
+                  align="center"
+                  color="textPrimary" 
+                  variant="h1"
+                >
+                   {`${time} 기준 \n 3 주 후의 인기 키워드는 ..`}
+                </Typography>
+                </CardContent>
+                
+              </Card>
+            </Grid>
+              </div>
                     </Grid>
                   
                   <Box mt={3}>

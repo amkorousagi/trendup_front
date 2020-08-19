@@ -130,6 +130,33 @@ export default class Trendup extends Component {
                 # 각 노드를 클릭하면 해당 채널로 이동합니다!
               </Typography>
               </Card>
+
+              <Card style={{
+        display: 'block',
+        //width: '30vw',
+        transitionDuration: '0.3s',
+        height: '100%'
+      }}>
+              <Typography 
+                variant="body1"
+              >
+                # 각 노드는 채널과 구독자 수를, 각 엣지는 공유하는 구독자 유뮤와 수를 나타냅니다.  
+              </Typography>
+              </Card>
+
+              <Card style={{
+        display: 'block',
+        //width: '30vw',
+        transitionDuration: '0.3s',
+        height: '100%'
+      }}>
+              <Typography 
+                variant="body1"
+              >
+                # 현재는 시범 버전이므로, 3~5명의 정보로 만들어진 map입니다. (GCP API call 의 free user limit)
+              </Typography>
+              </Card>
+
             </Grid>
                   </div>
         </Grid>
