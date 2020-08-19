@@ -20,14 +20,14 @@ import Chart from 'chart.js';
 
 function rating_mean_func(a) {
   var rating_mean;
-  //5, 15, 25, 35 
-  if(a > 35){
+  //15, 30, 45, 60 
+  if(a > 60){
     rating_mean = 5;
-  } else if(a > 25){
+  } else if(a > 45){
     rating_mean = 4;
-  } else if(a >15){
+  } else if(a >30){
     rating_mean = 3;
-  } else if(a >5){
+  } else if(a >15){
     rating_mean = 2;
   } else{
     rating_mean = 1;
